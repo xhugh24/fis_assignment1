@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "name": "Construction Cement",
+    "price": 1987.47,
+    "image": "../Assets/construction-cement.jpg",
+    "description": "94lb bag of high-quality Portland cement for concrete and masonry projects"
+  },
+  {
+    "id": "2",
+    "name": "Concrete Blocks",
+    "price": 4589.47,
+    "image": "../Assets/concrete-blocks.jpg",
+    "description": "Pack of 10 weed-resistant 16x16 inch concrete paver blocks for pathways"
+  },
+  {
+    "id": "3",
+    "name": "Weed Whacker",
+    "price": 19888.47,
+    "image": "../Assets/weed-whacker.jpg",
+    "description": "Cordless electric weed whacker with adjustable handle and 14-inch cutting path"
+  },
+  {
+    "id": "4",
+    "name": "Steel Rebar",
+    "price": 2446.47,
+    "image": "../Assets/steel-rebar.jpg",
+    "description": "10ft length of 1/2-inch steel rebar for concrete reinforcement"
+  },
+  {
+    "id": "5",
+    "name": "Power Saw",
+    "price": 15298.47,
+    "image": "../Assets/power-saw.jpg",
+    "description": "7-1/4 inch circular saw with laser guide for precise wood cutting"
+  },
+  {
+    "id": "6",
+    "name": "Power Drill",
+    "price": 13768.47,
+    "image": "../Assets/power-drill.jpg",
+    "description": "18V cordless power drill with variable speed and LED work light"
+  }
+]

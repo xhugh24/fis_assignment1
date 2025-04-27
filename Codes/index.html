@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phill's Hardware</title>
+    <!-- Boxicons CDN for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Chatling chatbot scripts -->
+    <script id="chatling-config">
+        window.chtlConfig = { chatbotId: "8652567693" };
+    </script>
+    <script id="chatling-embed-script" src="https://chatling.ai/js/embed.js" data-id="8652567693" async></script>
+    <style>
+        /* Import Poppins font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        /* Reset default margins and padding */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Poppins', sans-serif; background-color: #f5f5f5; min-height: 100vh; display: flex; flex-direction: column; }
+
+        main { flex: 1 0 auto; }
+
+        /* Header styling */
+        header { position: sticky; top: 0; width: 100%; padding: 20px 40px; background-color: #2e7d32; z-index: 10; transition: background-color 0.3s ease; }
+
+        header.scrolled { background-color: #2e7d32; }
+
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+
+        .logo-content { display: flex; align-items: center; color: white; font-size: 24px; font-weight: 700; text-decoration: none; }
+
+        .logo-icon { font-size: 2rem; margin-right: 10px; }
+
+        .logo-text { font-size: 24px; }
+
+        nav { flex-grow: 1; display: flex; justify-content: center; align-items: center; }
+
+        nav ul { list-style: none; display: flex; }
+
+        nav ul li { margin: 0 15px; }
+
+        nav ul li a { color: white; text-decoration: none; font-size: 18px; font-weight: 600; }
+
+        nav ul li a:hover { color: #a5d6a7; }
+
+        .cart-btn { background-color: white; color: #4caf50; font-size: 16px; font-weight: 600; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+
+        .cart-btn:hover { background-color: whitesmoke; }
+
+        /* Hamburger menu */
+        .hamburger { display: none; font-size: 28px; color: white; background: none; border: none; cursor: pointer; }
+
+        /* Hero section styling */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/login-stock.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content { max-width: 900px; width: 100%; color: white; }
+
+        .hero h1 { font-size: 48px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); margin-bottom: 20px; }
+
+        .hero h3 { font-size: 18px; font-weight: 400; margin-bottom: 30px; }
+
+        .button-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        .hero button { padding: 12px 24px; font-size: 16px; font-weight: 600; border: none; border-radius: 25px; cursor: pointer; transition: background-color 0.3s ease; }
+
+        .shop-now { background-color: white; color: #4caf50; }
+
+        .contact-us { background-color: #4caf50; color: white; }
+
+        .shop-now:hover { background-color: #4caf50; color: white; }
+
+        .contact-us:hover { background-color: #388e3c; }
+
+        /* Modular content sections */
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+
+        .content-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 20px; color: #2e7d32; }
+
+        .content-section p { font-size: 18px; font-weight: 400; color: #666; line-height: 1.6; }
+
+        /* Products grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; padding: 20px; }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover { transform: translateY(-5px); }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .product-card h3 { font-size: 20px; font-weight: 600; color: #2e7d32; margin-bottom: 12px; }
+
+        .product-card p { font-size: 16px; color: #666; margin-bottom: 15px; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; }
+
+        .product-card .price { font-size: 18px; font-weight: 700; color: #4caf50; margin-bottom: 15px; }
+
+        .product-card button { background-color: #4caf50; color: white; font-size: 14px; font-weight: 600; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+
+        .product-card button:hover { background-color: #388e3c; }
+
+        .product-card button.pulse { animation: pulse 0.5s ease; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        /* Chatbot section */
+        .chatbot-section { background-color: #e8f5e9; padding: 40px 20px; }
+
+        .chatbot-container { max-width: 600px; margin: 0 auto; background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+
+        .chatbot-container h3 { font-size: 24px; color: #2e7d32; margin-bottom: 20px; }
+
+        #chatbot-widget { min-height: 300px; }
+
+        /* Footer */
+        footer { background-color: #1a1a1a; color: #fff; padding: 60px 0 20px; flex-shrink: 0; }
+
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 0 20px; }
+
+        .footer-section h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: #4caf50; }
+
+        .footer-section p { font-size: 14px; line-height: 1.6; color: #ccc; }
+
+        .footer-section ul { list-style: none; }
+
+        .footer-section ul li { margin-bottom: 10px; }
+
+        .footer-section ul li a { color: #ccc; text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+
+        .footer-section ul li a:hover { color: #4caf50; }
+
+        .footer-socials { display: flex; gap: 15px; }
+
+        .footer-socials a { color: #fff; font-size: 24px; transition: color 0.3s ease; }
+
+        .footer-socials a:hover { color: #4caf50; }
+
+        .newsletter-form { display: flex; gap: 10px; margin-top: 15px; }
+
+        .newsletter-form input { padding: 10px; font-size: 14px; border: none; border-radius: 20px; width: 100%; max-width: 200px; outline: none; }
+
+        .newsletter-form button { padding: 10px 20px; font-size: 14px; font-weight: 600; background-color: #4caf50; color: #fff; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+
+        .newsletter-form button:hover { background-color: #388e3c; }
+
+        .footer-bottom { text-align: center; padding-top: 40px; border-top: 1px solid #333; margin-top: 40px; font-size: 12px; color: #888; }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            .header-content { flex-wrap: wrap; }
+            .logo-content { font-size: 22px; }
+            .logo-icon { font-size: 1.8rem; }
+            .logo-text { font-size: 22px; }
+            nav { justify-content: flex-end; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #2e7d32;
+                padding: 20px 0;
+                z-index: 10;
+            }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; text-align: center; }
+            nav ul li a { font-size: 18px; }
+            nav ul .cart-menu-item { margin: 20px 0; }
+            .hamburger { display: block; }
+            .hero { padding: 20px; }
+            .hero-content { max-width: 100%; }
+            .hero h1 { font-size: 42px; margin-bottom: 15px; }
+            .hero h3 { font-size: 18px; margin-bottom: 20px; }
+            .hero button { padding: 12px 24px; font-size: 16px; }
+            .content-section { padding: 40px 15px; }
+            .content-section h2 { font-size: 32px; }
+            .content-section p { font-size: 16px; }
+            .products-grid { grid-template-columns: 1fr; gap: 15px; padding: 15px; }
+            .product-card { padding: 15px; height: 400px; }
+            .product-card img { height: 180px; }
+            .product-card h3 { font-size: 18px; }
+            .product-card p { font-size: 14px; }
+            .product-card .price { font-size: 16px; }
+            .product-card button { padding: 8px 16px; font-size: 14px; }
+            .chatbot-section { padding: 30px 15px; }
+            .chatbot-container { padding: 15px; }
+            .chatbot-container h3 { font-size: 22px; }
+            #chatbot-widget { min-height: 250px; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .footer-section h3 { font-size: 18px; }
+            .newsletter-form input { max-width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 36px; }
+            .hero h3 { font-size: 16px; }
+            .hero button { padding: 10px 20px; font-size: 14px; }
+            .content-section h2 { font-size: 28px; }
+            .product-card img { height: 150px; }
+            .product-card { height: 380px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo-content">
+                <i class='bx bx-wrench logo-icon'></i>
+                <span class="logo-text">PHILL'S HARDWARE</span>
+            </a>
+            <nav>
+                <button class="hamburger">☰</button>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="cart-menu-item"><button class="cart-btn menu-cart">Cart</button></li>
+                </ul>
+            </nav>
+            <button class="cart-btn header-cart">Cart</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your One-Stop Shop for Quality Hardware and Building Supplies</h1>
+                <h3>Discover our wide range of tools, materials, and supplies for all your DIY and professional projects.</h3>
+                <div class="button-container">
+                    <button class="shop-now">Shop Now</button>
+                    <button class="contact-us">Contact Us</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="content-section" id="products">
+            <h2>Our Products</h2>
+            <p>Browse our selection of high-quality hardware products for home improvement and construction.</p>
+            <div class="products-grid" id="products-grid"></div>
+        </section>
+
+        <!-- About Section -->
+        <section class="content-section" id="about">
+            <h2>About Us</h2>
+            <p>Phill's Hardware has been serving the community for over 20 years, providing top-notch tools and supplies for professionals and DIY enthusiasts alike.</p>
+        </section>
+
+        <!-- Chatbot Section -->
+        <section class="chatbot-section content-section">
+            <h2>Ask Our AI Assistant</h2>
+            <div class="chatbot-container">
+                <h3>Hardware Helper</h3>
+                <p>Have questions about our products? Chat with our AI assistant!</p>
+                <div id="chatbot-widget"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Phill's Hardware</h3>
+                <p>We are your trusted source for hardware and building supplies, serving the community with quality products for over 20 years.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@phillshardware.com</p>
+                <p>Phone: (876) 123-4567</p>
+                <p>Address: Kingston, Jamaica</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get the latest updates and offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Phill's Hardware. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+
+        // Cart button visibility toggle
+        const headerCart = document.querySelector('.header-cart');
+        const menuCart = document.querySelector('.menu-cart');
+
+        function toggleCartVisibility() {
+            if (window.innerWidth > 768) {
+                headerCart.style.display = 'inline-block';
+                menuCart.style.display = 'none';
+            } else {
+                headerCart.style.display = 'none';
+                menuCart.style.display = 'inline-block';
+            }
+        }
+
+        // Run on load and resize
+        toggleCartVisibility();
+        window.addEventListener('resize', toggleCartVisibility);
+
+        // Fetch and display products
+        async function loadProducts() {
+            try {
+                const response = await fetch('products.json');
+                const products = await response.json();
+                const productsGrid = document.getElementById('products-grid');
+
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">J$${product.price.toLocaleString('en-JM', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                        <button onclick="handleAddToCart()">Add to Cart</button>
+                    `;
+                    productsGrid.appendChild(productCard);
+                });
+            } catch (error) {
+                console.error('Error loading products:', error);
+                productsGrid.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+            }
+        }
+
+        // Add to cart with pulse animation
+        function handleAddToCart() {
+            const button = event.target;
+            button.classList.add('pulse');
+            setTimeout(() => button.classList.remove('pulse'), 500);
+            // Placeholder for actual cart functionality
+            console.log('Added to cart');
+        }
+
+        // Load products on page load
+        loadProducts();
+    </script>
+</body>
+</html>
